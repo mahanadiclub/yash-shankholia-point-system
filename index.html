@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>database</title>
+</head>
+<style>
+  body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+  }
+
+  form {
+      background-color: #333;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      width: 300px;
+  }
+
+  h1 {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 30px;
+  }
+
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+  }
+
+  table, th, td {
+      border: 1px solid #555;
+  }
+
+  th, td {
+      padding: 10px;
+      text-align: left;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      background-color: #444;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 4px;
+  }
+
+  input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+  }
+
+  input[type="submit"]:hover {
+      background-color: #45a049;
+  }
+</style>
+<body>
+  <form method="post" autocomplete="off" name="google-sheet">
+  	<center><br><br>
+         <h1>Mahanadi Club, Sambalpur</h1><br>
+         <table border="5">	
+            
+             <tr><td><b>Membership Id : </b></td>
+             <td><input type="text" name="Meambership Id" value="MC-L/580"  required="" /></td>
+            </tr>
+            <tr><td><b>ADD amount : </b></td>
+            <td><input type="number" name="ADD amount"   required="" /></td>
+            </tr>
+            <tr><td><b>Redeem amount : </b></td>
+            <td><input type="number" name="Redeem amount"   required="" /></td>
+            </tr>
+           
+           
+         </table>
+         <br><br>
+         <input type="submit" name="submit" value="Submit"/>
+    </center>
+  </form>
+
+  <script type="text/javascript">
+
+
+	  const scriptURL = 'https://script.google.com/macros/s/AKfycbwDZrSKDvE4PuXSAnAjsqWcsNoHRYu6VVThEjestG1XxPcq-M4VgBxtzrRPO1Y1h53jBQ/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("You have successfully submitted."))
+                .catch(error => console.error('Error!', error.message))
+            })
+  </script>
+</body>
+</html>
